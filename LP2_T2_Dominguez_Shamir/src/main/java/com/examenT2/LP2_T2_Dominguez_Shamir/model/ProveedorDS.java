@@ -56,5 +56,8 @@ public class ProveedorDS {
 	@JoinColumn(name = "id_rubro")
 	private RubroDS rubro;
 	
+	public String getFullRazon() {
+		return ruc+" - " +razonSocial;
+	}
 	
 }

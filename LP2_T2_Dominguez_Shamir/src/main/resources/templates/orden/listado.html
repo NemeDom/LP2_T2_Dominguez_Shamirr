@@ -19,7 +19,7 @@
 						<h1 class="card-title">Listado de órdenes de compra</h1>
 					</div>
 					<div class="col-md-2">
-						<a href="#" class="btn btn-success w-100"> <i class="fa-solid fa-plus"></i>
+						<a th:href="@{/orden/nuevo}" class="btn btn-success w-100"> <i class="fa-solid fa-plus"></i>
 							Nuevo
 						</a>
 					</div>
@@ -40,17 +40,17 @@
 							</tr>
 						</thead>
 						<tbody class="table-secondary text-nowrap">
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+							<tr th:each="item: ${lstOrdenCompra}" >
+								<td th:text="${item.nroOrden}"></td>
+								<td th:text="${item.fechaEntrega}"></td>
+								<td th:text="${item.direccionEntrega}"></td>
+								<td th:text="${item.proveedor.fullRazon}"></td>
+								<td th:text="${item.proveedor.rubro.denominacion}"></td>
+								<td th:text="${item.proveedor.paginaWeb}"></td>
+								<td th:text="${item.monto}"></td>
+								<td th:text="${item.fullEstado}"></td>
 								<td class="text-center align-middle">
-									<a href="#" class="btn btn-outline-primary" title="Editar">
+									<a th:href="@{/orden/edicion/{id}(id=${item.nroOrden})}" class="btn btn-outline-primary" title="Editar">
 										<i class="fa-regular fa-pen-to-square"></i>
 									</a>
 								</td>
@@ -62,5 +62,5 @@
 		</div>
 	</div>
 </body>
-
+<th:block th:utext="${alert}"></th:block>
 </html>

@@ -49,8 +49,16 @@ public class OrdenCompraDS {
 	private String direccionEntrega;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_producto")
+	@JoinColumn(name = "id_proveedor")
 	private ProveedorDS proveedor;
 	
-
+	public String getFullEstado() {
+	    if ("C".equals(estado)) {
+	        return "Completado";
+	    } else if ("A".equals(estado)) {
+	        return "Atrasado";
+	    } else {
+	        return "Pendiente";
+	    }
+	}
 }
